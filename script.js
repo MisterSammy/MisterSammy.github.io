@@ -297,11 +297,18 @@ function initTypingEffect() {
                 }
             });
         } else if (node.nodeType === Node.ELEMENT_NODE) {
-            // Add opening tag
+            // Collect all attributes
+            let attributesStr = '';
+            if (node.attributes) {
+                for (let attr of node.attributes) {
+                    attributesStr += ` ${attr.name}="${attr.value}"`;
+                }
+            }
+            
+            // Add opening tag with all attributes
             segments.push({ 
                 type: 'html', 
-                content: '<' + node.tagName.toLowerCase() + 
-                    (node.className ? ' class="' + node.className + '"' : '') + '>' 
+                content: '<' + node.tagName.toLowerCase() + attributesStr + '>' 
             });
             
             // Parse children
@@ -327,7 +334,9 @@ function initTypingEffect() {
     let currentSegment = 0;
     
     function typeNextSegment() {
-        if (currentSegment >= segments.length) return;
+        if (currentSegment >= segments.length) {
+            return;
+        }
         
         const segment = segments[currentSegment];
         
