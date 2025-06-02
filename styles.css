@@ -137,6 +137,8 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
 }
 
 /* Improve font loading performance */
@@ -304,11 +306,15 @@ img[loading="lazy"] {
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
-    gap: 0.25rem;
+    padding: 0;
+    gap: 4px;
 }
 
 .hamburger-line {
@@ -316,17 +322,21 @@ img[loading="lazy"] {
     height: 2px;
     background: var(--text-primary);
     transition: all 0.3s ease;
+    display: block;
 }
 
 /* Hero Section - Critical Above the Fold */
 .hero {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--color-base-100) 0%, var(--color-base-200) 100%);
+    justify-content: center;
+    background: var(--color-base-100);
     position: relative;
     overflow: hidden;
-    padding-top: 70px; /* Account for fixed nav */
+    padding: 70px 20px 0 20px; /* Account for fixed nav and horizontal padding */
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .hero::before {
@@ -348,7 +358,7 @@ img[loading="lazy"] {
     width: 100%;
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .hero-content {
@@ -359,37 +369,13 @@ img[loading="lazy"] {
     max-width: 1000px;
 }
 
-.profile-image-container {
-    position: relative;
-    flex-shrink: 0;
-}
-
 .profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid var(--color-accent);
-    box-shadow: 0 0 30px color-mix(in oklch, var(--color-accent) 30%, transparent);
-    position: relative;
-    z-index: 2;
+    height: 60vh;
+    max-height: 500px;
+    width: auto;
     object-fit: cover;
-}
-
-.image-border {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border: 2px solid var(--color-secondary);
-    border-radius: 50%;
-    opacity: 0.5;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.05); opacity: 0.8; }
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .hero-title {
@@ -516,8 +502,9 @@ img[loading="lazy"] {
 
 /* About Section */
 .about {
-    padding: var(--section-padding);
+    padding: 100px 0; /* Standard section padding */
     background: var(--color-base-100);
+    margin: 0; /* Remove all margins */
 }
 
 .about-content {
@@ -525,6 +512,7 @@ img[loading="lazy"] {
     grid-template-columns: 2fr 1fr;
     gap: 4rem;
     align-items: start;
+    padding-top: 0; /* Remove the padding-top we added earlier */
 }
 
 .about-description {
@@ -1028,18 +1016,39 @@ img[loading="lazy"] {
         display: flex;
     }
     
+    /* Hero section - remove full viewport height on mobile */
+    .hero {
+        height: auto;
+        min-height: auto;
+        padding: 100px 20px 60px 20px; /* Top padding for nav + some space, bottom padding for spacing */
+    }
+    
+    /* Hide terminal text on mobile */
+    .terminal-text {
+        display: none;
+    }
+    
+    /* Hide CTA buttons on mobile */
+    .hero-cta {
+        display: none;
+    }
+    
     .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
+        grid-template-columns: auto 1fr;
+        text-align: left;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    
+    .profile-image {
+        height: 25vh;
+        max-height: 150px;
+        width: auto;
     }
     
     .hero-title {
-        font-size: clamp(1.75rem, 6vw, 2.5rem);
-    }
-    
-    .hero-cta {
-        justify-content: center;
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        margin-bottom: 1rem;
     }
     
     .about-content {
@@ -1068,17 +1077,22 @@ img[loading="lazy"] {
 
 @media (max-width: 480px) {
     .hero-content {
-        gap: 1.5rem;
+        gap: 1rem;
+        grid-template-columns: auto 1fr;
     }
     
     .profile-image {
-        width: 120px;
-        height: 120px;
+        height: 20vh;
+        max-height: 120px;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.25rem, 4.5vw, 1.75rem);
     }
     
     .hero-cta {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
     
     .btn-primary, .btn-secondary {
@@ -1115,4 +1129,10 @@ img[loading="lazy"] {
     html {
         scroll-behavior: auto;
     }
+}
+
+/* Ensure no gaps between sections */
+section {
+    margin: 0;
+    padding: 0;
 } 

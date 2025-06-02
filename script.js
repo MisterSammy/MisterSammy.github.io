@@ -185,8 +185,8 @@ function initThemeToggle() {
     
     if (!themeToggle) return;
     
-    // Check for saved theme preference or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
     
     // Apply the saved theme
     html.setAttribute('data-theme', savedTheme);
