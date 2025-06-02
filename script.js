@@ -35,7 +35,10 @@ const observerOptions = {
 class MatrixRain {
     constructor() {
         this.canvas = document.getElementById('matrix-bg');
-        if (!this.canvas) return;
+        if (!this.canvas) {
+            console.warn('Matrix canvas element not found - matrix effect will not display');
+            return;
+        }
         
         this.ctx = this.canvas.getContext('2d');
         this.animationId = null;
@@ -83,16 +86,12 @@ class MatrixRain {
         }
         this.lastTime = currentTime;
 
-        // Semi-transparent background for fade effect using CSS variable
-        const baseColor = getComputedStyle(document.documentElement)
-            .getPropertyValue('--color-base-100').trim();
-        this.ctx.fillStyle = baseColor.replace('oklch(', 'oklch(').replace(')', ', 0.04)');
+        // Semi-transparent background for fade effect
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // Use accent color for matrix characters
-        const accentColor = getComputedStyle(document.documentElement)
-            .getPropertyValue('--color-accent').trim();
-        this.ctx.fillStyle = accentColor;
+        // Matrix green color
+        this.ctx.fillStyle = '#00ff41';
         this.ctx.font = '15px monospace';
 
         for (let i = 0; i < this.drops.length; i++) {
@@ -372,31 +371,106 @@ function initParallaxEffect() {
 // Glitch Effect for specific elements
 function initGlitchEffect() {
     const glitchElements = document.querySelectorAll('.text-gradient');
+    const phpDeveloperElement = document.querySelector('.php-developer-text');
     
-    const addGlitch = (element) => {
-        element.style.textShadow = `
-            2px 0 #ff007f,
-            -2px 0 #00ffff,
-            0 2px #00ff41
-        `;
+    const addGlitch = (element, intensity = 1) => {
+        // More intense glitch with multiple layered effects
+        const glitchVariations = [
+            `
+                ${4 * intensity}px 0 #ff007f,
+                ${-4 * intensity}px 0 #00ffff,
+                0 ${4 * intensity}px #00ff41,
+                ${2 * intensity}px ${2 * intensity}px #ff3366,
+                ${-2 * intensity}px ${-2 * intensity}px #33ccff
+            `,
+            `
+                ${6 * intensity}px 0 #ff0066,
+                ${-6 * intensity}px 0 #0099ff,
+                0 ${6 * intensity}px #66ff00,
+                ${3 * intensity}px ${-3 * intensity}px #ff6600,
+                ${-3 * intensity}px ${3 * intensity}px #cc00ff
+            `,
+            `
+                ${8 * intensity}px 0 #ff3399,
+                ${-8 * intensity}px 0 #33ccff,
+                0 ${8 * intensity}px #99ff33,
+                ${4 * intensity}px ${4 * intensity}px #ff9933,
+                ${-4 * intensity}px ${-4 * intensity}px #9933ff
+            `,
+            // Extra intense variation for PHP Developer
+            `
+                ${10 * intensity}px 0 #ff0044,
+                ${-10 * intensity}px 0 #0044ff,
+                0 ${10 * intensity}px #44ff00,
+                ${5 * intensity}px ${-5 * intensity}px #ff4400,
+                ${-5 * intensity}px ${5 * intensity}px #4400ff,
+                ${2 * intensity}px ${8 * intensity}px #ff8800,
+                ${-2 * intensity}px ${-8 * intensity}px #8800ff
+            `
+        ];
+        
+        const randomVariation = glitchVariations[Math.floor(Math.random() * glitchVariations.length)];
+        
+        // Apply intense glitch effect
+        element.style.textShadow = randomVariation;
+        element.style.animation = `glitch-shake ${0.15 / intensity}s ease-in-out`;
+        
+        // Add random text transform for extra chaos
+        const transforms = [
+            `skewX(${5 * intensity}deg)`, 
+            `skewX(${-5 * intensity}deg)`, 
+            `scaleY(${1 + 0.1 * intensity})`, 
+            `scaleY(${1 - 0.1 * intensity})`,
+            `rotate(${2 * intensity}deg)`,
+            `rotate(${-2 * intensity}deg)`
+        ];
+        const randomTransform = transforms[Math.floor(Math.random() * transforms.length)];
+        element.style.transform = randomTransform;
+        
+        // Random duration between 100-400ms for varied effect, shorter for higher intensity
+        const duration = (100 + Math.random() * 300) / intensity;
         
         setTimeout(() => {
             element.style.textShadow = 'none';
-        }, 150);
+            element.style.animation = '';
+            element.style.transform = '';
+        }, duration);
     };
     
-    // Add random glitch effect
+    // Much more frequent glitch effect - 30% chance every 800ms
     const glitchInterval = setInterval(() => {
-        if (Math.random() > 0.95 && glitchElements.length > 0) {
+        if (Math.random() > 0.7 && glitchElements.length > 0) {
             const randomElement = glitchElements[Math.floor(Math.random() * glitchElements.length)];
-            addGlitch(randomElement);
+            const intensity = randomElement === phpDeveloperElement ? 1.5 : 1;
+            addGlitch(randomElement, intensity);
+        }
+    }, 800);
+    
+    // Additional aggressive glitch specifically for "PHP Developer" every 2 seconds
+    const phpDeveloperGlitch = setInterval(() => {
+        if (phpDeveloperElement) {
+            addGlitch(phpDeveloperElement, 2); // Double intensity for PHP Developer
         }
     }, 2000);
     
-    // Clean up interval when page is hidden
+    // Extra random bursts of glitches for PHP Developer every 5-8 seconds
+    const phpBurstGlitch = setInterval(() => {
+        if (phpDeveloperElement && Math.random() > 0.3) {
+            // Rapid-fire glitch burst
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    addGlitch(phpDeveloperElement, 1.8);
+                }, i * 150);
+            }
+        }
+    }, 5000 + Math.random() * 3000);
+    
+    // Clean up intervals when page is hidden
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             clearInterval(glitchInterval);
+            clearInterval(phpDeveloperGlitch);
+            clearInterval(phpBurstGlitch);
         }
     });
 }
@@ -507,9 +581,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initCardEffects();
     initNavScrollEffect();
     
-    // Initialize background effects only if not on mobile
+    // Initialize background effects - Matrix effect always runs
+    new MatrixRain();
+    
+    // Initialize particle system and parallax only if not on mobile for performance
     if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        new MatrixRain();
         new ParticleSystem();
         initParallaxEffect();
     }

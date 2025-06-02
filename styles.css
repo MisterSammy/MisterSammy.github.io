@@ -778,6 +778,39 @@ img[loading="lazy"] {
     100% { transform: translateX(100%); }
 }
 
+@keyframes glitch-shake {
+    0%, 100% { 
+        transform: translate(0);
+    }
+    10% { 
+        transform: translate(-2px, 1px) skew(1deg);
+    }
+    20% { 
+        transform: translate(2px, -1px) skew(-1deg);
+    }
+    30% { 
+        transform: translate(-1px, 2px) skew(0.5deg);
+    }
+    40% { 
+        transform: translate(1px, -2px) skew(-0.5deg);
+    }
+    50% { 
+        transform: translate(-2px, -1px) skew(1deg);
+    }
+    60% { 
+        transform: translate(2px, 1px) skew(-1deg);
+    }
+    70% { 
+        transform: translate(-1px, -2px) skew(0.5deg);
+    }
+    80% { 
+        transform: translate(1px, 2px) skew(-0.5deg);
+    }
+    90% { 
+        transform: translate(-2px, 1px) skew(1deg);
+    }
+}
+
 /* Case Studies Section */
 .case-studies {
     padding: var(--section-padding);
