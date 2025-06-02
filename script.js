@@ -83,11 +83,16 @@ class MatrixRain {
         }
         this.lastTime = currentTime;
 
-        // Semi-transparent background for fade effect
-        this.ctx.fillStyle = 'rgba(10, 10, 10, 0.04)';
+        // Semi-transparent background for fade effect using CSS variable
+        const baseColor = getComputedStyle(document.documentElement)
+            .getPropertyValue('--color-base-100').trim();
+        this.ctx.fillStyle = baseColor.replace('oklch(', 'oklch(').replace(')', ', 0.04)');
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.ctx.fillStyle = '#00ffff';
+        // Use accent color for matrix characters
+        const accentColor = getComputedStyle(document.documentElement)
+            .getPropertyValue('--color-accent').trim();
+        this.ctx.fillStyle = accentColor;
         this.ctx.font = '15px monospace';
 
         for (let i = 0; i < this.drops.length; i++) {
@@ -460,10 +465,10 @@ function initNavScrollEffect() {
         const scrollY = window.scrollY;
         
         if (scrollY > 100) {
-            nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            nav.style.background = 'color-mix(in oklch, var(--color-base-100) 98%, transparent)';
             nav.style.backdropFilter = 'blur(20px)';
         } else {
-            nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            nav.style.background = 'color-mix(in oklch, var(--color-base-100) 95%, transparent)';
             nav.style.backdropFilter = 'blur(10px)';
         }
         
