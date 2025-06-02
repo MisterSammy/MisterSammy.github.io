@@ -64,10 +64,10 @@
             </div>
             <div class="nav-right">
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
-                    <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                    <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
                     </svg>
-                    <svg class="theme-icon theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="5"/>
                         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                     </svg>
@@ -307,24 +307,24 @@
                 Selected Case Studies
             </h2>
             <div class="case-studies-grid">
-                <div class="case-study-card" onclick="window.open('#', '_blank')">
+                <div class="case-study-card" onclick="window.open('https://miqo.io/', '_blank')">
                     <div class="case-study-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23001122'/%3E%3Ctext x='200' y='125' text-anchor='middle' dominant-baseline='central' fill='%2300ffff' font-family='monospace' font-size='16'%3E🐧 Roost Dashboard%3C/text%3E%3C/svg%3E" 
-                             alt="Roost Project Dashboard Screenshot"
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23001122'/%3E%3Ctext x='200' y='125' text-anchor='middle' dominant-baseline='central' fill='%23ff007f' font-family='monospace' font-size='16'%3E🗃️ Miqo Platform%3C/text%3E%3C/svg%3E" 
+                             alt="Miqo M&A Platform Screenshot"
                              loading="lazy">
                     </div>
                     <div class="case-study-overlay">
-                        <div class="view-project">View Case Study →</div>
+                        <div class="view-project">View Project →</div>
                     </div>
                     <div class="case-study-content">
-                        <h3 class="case-study-title">🐧 Roost</h3>
-                        <p class="case-study-subtitle">Wowing new clients with a best-in-class onboarding experience</p>
-                        <p class="case-study-description">The award-winning law firm Stephenson Law had a fresh idea: transform client onboarding from days to minutes. Using Laravel, I crafted a sophisticated platform that streamlines identity verification, contract signing, and matter discussions. The custom-built interface seamlessly matches their brand strategy, while the back office enjoys automated compliance tracking and real-time resource allocation views. The result? A 90% reduction in onboarding time and automatic notifications for any delays exceeding 24 hours.</p>
+                        <h3 class="case-study-title">🗃️ Miqo</h3>
+                        <p class="case-study-subtitle">Mergers and acquisitions for the 21st century</p>
+                        <p class="case-study-description">As a consultant for this innovative startup, I modernized the traditional M&A process with a cloud-based Laravel platform. The system automates due diligence documentation, features an anonymized marketplace for buyers to discover opportunities matching their criteria, and sends intelligent notifications for new listings. This digital transformation brings efficiency and transparency to an industry traditionally bogged down by manual processes.</p>
                         <div class="case-study-tags">
                             <span class="tag">Laravel</span>
-                            <span class="tag">Identity Verification</span>
-                            <span class="tag">Contract Management</span>
-                            <span class="tag">Compliance</span>
+                            <span class="tag">Due Diligence</span>
+                            <span class="tag">Marketplace</span>
+                            <span class="tag">Automation</span>
                         </div>
                     </div>
                 </div>
@@ -351,46 +351,24 @@
                     </div>
                 </div>
 
-                <div class="case-study-card" onclick="window.open('https://miqo.io/', '_blank')">
-                    <div class="case-study-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23001122'/%3E%3Ctext x='200' y='125' text-anchor='middle' dominant-baseline='central' fill='%23ff007f' font-family='monospace' font-size='16'%3E🗃️ Miqo Platform%3C/text%3E%3C/svg%3E" 
-                             alt="Miqo M&A Platform Screenshot"
-                             loading="lazy">
-                    </div>
-                    <div class="case-study-overlay">
-                        <div class="view-project">View Project →</div>
-                    </div>
-                    <div class="case-study-content">
-                        <h3 class="case-study-title">🗃️ Miqo</h3>
-                        <p class="case-study-subtitle">Mergers and acquisitions for the 21st century</p>
-                        <p class="case-study-description">As a consultant for this innovative startup, I modernized the traditional M&A process with a cloud-based Laravel platform. The system automates due diligence documentation, features an anonymized marketplace for buyers to discover opportunities matching their criteria, and sends intelligent notifications for new listings. This digital transformation brings efficiency and transparency to an industry traditionally bogged down by manual processes.</p>
-                        <div class="case-study-tags">
-                            <span class="tag">Laravel</span>
-                            <span class="tag">Due Diligence</span>
-                            <span class="tag">Marketplace</span>
-                            <span class="tag">Automation</span>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="case-study-card" onclick="window.open('#', '_blank')">
                     <div class="case-study-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23001122'/%3E%3Ctext x='200' y='125' text-anchor='middle' dominant-baseline='central' fill='%231e90ff' font-family='monospace' font-size='16'%3E⛵ Irish Sailing Club%3C/text%3E%3C/svg%3E" 
-                             alt="Irish Sailing Club Dashboard Screenshot"
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23001122'/%3E%3Ctext x='200' y='125' text-anchor='middle' dominant-baseline='central' fill='%2300ffff' font-family='monospace' font-size='16'%3E🐧 Roost Dashboard%3C/text%3E%3C/svg%3E" 
+                             alt="Roost Project Dashboard Screenshot"
                              loading="lazy">
                     </div>
                     <div class="case-study-overlay">
                         <div class="view-project">View Case Study →</div>
                     </div>
                     <div class="case-study-content">
-                        <h3 class="case-study-title">⛵ Irish Sailing Club</h3>
-                        <p class="case-study-subtitle">A dashboard for the high seas</p>
-                        <p class="case-study-description">Transitioning from years of Excel-based management, I delivered a comprehensive CRM solution using Laravel Filament. This modern dashboard efficiently handles membership administration, contact management, and club operations. The integration of Google Maps provides location-based features that enhance member experience and administrative efficiency. The result is a streamlined system that saves hours of manual work while providing better insights into club operations.</p>
+                        <h3 class="case-study-title">🐧 Roost</h3>
+                        <p class="case-study-subtitle">Wowing new clients with a best-in-class onboarding experience</p>
+                        <p class="case-study-description">The award-winning law firm Stephenson Law had a fresh idea: transform client onboarding from days to minutes. Using Laravel, I crafted a sophisticated platform that streamlines identity verification, contract signing, and matter discussions. The custom-built interface seamlessly matches their brand strategy, while the back office enjoys automated compliance tracking and real-time resource allocation views. The result? A 90% reduction in onboarding time and automatic notifications for any delays exceeding 24 hours.</p>
                         <div class="case-study-tags">
-                            <span class="tag">Laravel Filament</span>
-                            <span class="tag">CRM</span>
-                            <span class="tag">Google Maps</span>
-                            <span class="tag">Dashboard</span>
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Identity Verification</span>
+                            <span class="tag">Contract Management</span>
+                            <span class="tag">Compliance</span>
                         </div>
                     </div>
                 </div>

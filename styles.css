@@ -292,6 +292,10 @@ img[loading="lazy"] {
 
 .theme-icon {
     transition: opacity 0.3s ease;
+    width: 20px;
+    height: 20px;
+    display: block;
+    stroke-width: 2;
 }
 
 :root[data-theme="dark"] .theme-icon-light {
@@ -420,6 +424,11 @@ img[loading="lazy"] {
     line-height: 1.4;
     border-radius: var(--radius-field);
     box-shadow: 0 4px 20px color-mix(in oklch, var(--color-neutral) 30%, transparent);
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .status-active {
