@@ -378,7 +378,7 @@ img[loading="lazy"] {
     max-height: 500px;
     width: auto;
     object-fit: cover;
-    border-radius: 8px;
+    border: 2px solid #f8f8f2;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -1164,6 +1164,7 @@ img[loading="lazy"] {
         height: 25vh;
         max-height: 150px;
         width: auto;
+        border: 2px solid #f8f8f2;
     }
     
     .hero-title {
@@ -1222,6 +1223,7 @@ img[loading="lazy"] {
     .profile-image {
         height: 20vh;
         max-height: 120px;
+        border: 2px solid #f8f8f2;
     }
     
     .hero-title {
