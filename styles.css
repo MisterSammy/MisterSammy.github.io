@@ -338,7 +338,7 @@ img[loading="lazy"] {
     background: var(--color-base-100);
     position: relative;
     overflow: hidden;
-    padding: 70px 20px 0 20px; /* Account for fixed nav and horizontal padding */
+    padding: 0px 20px 0 20px; /* Account for fixed nav and horizontal padding */
     margin: 0;
     box-sizing: border-box;
 }
